@@ -1,0 +1,134 @@
+/* Basic browser reset */ 
+#EAD_wrapper, #EAD_wrapper * 
+{ 
+	/* font properties */
+	font-family: arial, Helvetica, sans-serif; 
+	font-size: 13px; 
+	/* font-size-adjust: 0.50; - This seems to worsen compatibility between CDM render and standalone */
+	
+	/* text properties */ 
+	line-height: 1em; 
+	letter-spacing: normal; 
+	text-indent: 0; 
+	text-transform: none; 
+	white-space: normal; 
+	word-spacing: normal; 
+}
+	/* The following reset CSS has been borrowed from Yahoo Reset CSS, and modified to affect only the #EAD_wrapper div 
+		See the .css file at: http://yui.yahooapis.com/2.5.2/build/reset/reset-min.css , 
+		and the explanatory page at http://developer.yahoo.com/yui/reset/
+	*/
+#EAD_wrapper div, #EAD_wrapper ul, #EAD_wrapper ol, #EAD_wrapper li, #EAD_wrapper h1, #EAD_wrapper h2, 
+#EAD_wrapper h3, #EAD_wrapper h4, #EAD_wrapper h5,#EAD_wrapper h6,#EAD_wrapper pre, #EAD_wrapper form, 
+#EAD_wrapper input, #EAD_wrapper p, #EAD_wrapper blockquote, #EAD_wrapper th, #EAD_wrapper td
+{
+	margin:0; padding:0;
+}
+
+#EAD_wrapper table{border-collapse:collapse;border-spacing:0;}
+#EAD_wrapper img{border:0;} 
+#EAD_wrapper address, #EAD_wrapper th {font-style:normal;font-weight:normal;}
+#EAD_wrapper li{list-style:none;} 
+#EAD_wrapper th{text-align:left;}
+#EAD_wrapper h1, #EAD_wrapper h2, #EAD_wrapper h3, #EAD_wrapper h4, 
+#EAD_wrapper h5, #EAD_wrapper h6 
+{
+	font-size:100%; font-weight:normal;
+}
+#EAD_wrapper input, #EAD_wrapper textarea, #EAD_wrapper select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+#EAD_wrapper input, #EAD_wrapper textarea, #EAD_wrapper select{*font-size:100%;} #EAD_wrapper legend{color:#000;}
+/* END Reset CSS */
+
+/* Headers */
+#EAD_wrapper h1{ font-size: 1.6em; }
+#EAD_wrapper h2{ font-size: 1.5em; }
+#EAD_wrapper h3{ font-size: 1.1em; }
+#EAD_wrapper h4{ font-size: 1.0em; }
+#EAD_wrapper h5{ font-size: .9em; }
+#EAD_wrapper h6{ font-size: .8em; }
+#EAD_wrapper h1, #EAD_wrapper h2, #EAD_wrapper h3, #EAD_wrapper h4, #EAD_wrapper h5, 
+#EAD_wrapper h6 
+{ 
+	font-weight: bold; margin: .5em 0; 
+}
+
+/* Default elements */
+#EAD_wrapper p { margin: .5em 0; }
+#EAD_wrapper ul { margin-left: 1em; }
+#EAD_wrapper li { margin: .25em 0; }
+#EAD_wrapper td { vertical-align: top; }
+#EAD_wrapper address { margin-top: .5em; }
+#EAD_wrapper td address { margin-top: 0; }	/* Table takes care of margin, remove default address margin. */
+em, #EAD_wrapper em { font-style: italic !important; }
+b, #EAD_wrapper b { font-weight: bold !important; }
+i, #EAD_wrapper i { font-weight: italic !important; }
+sub, #EAD_wrapper sub { vertical-align: sub !important; font-size: .9em; }
+sup, #EAD_wrapper sup { vertical-align: super !important; font-size: .9em; }
+
+/* Classed elements */
+#EAD_wrapper a.toggle_btn
+{ 
+	padding: 0 5px; width: 30px; font-size: .6em; border: 1px solid #444; 
+	background-color: #ddd; color: #000; text-decoration: none; 
+}
+#EAD_wrapper .label { color: #474747; font-weight: bold; }
+#EAD_wrapper td.label { width: 120px; text-align: right; padding-right: 10px; }
+
+
+/* Body table */ 
+#EAD_wrapper #EAD_body_table { width: 100%; }
+
+/* EAD Header */ 
+#EAD_wrapper #EAD_header { text-align: center; }
+#EAD_wrapper #EAD_header h1, .EAD_content h2 { color: #474747; }
+#EAD_wrapper #EAD_header h1 { padding-right: 280px; }
+
+/* EAD Content */ 
+#EAD_wrapper .EAD_content h2 { border-top: 1px solid #999; width: 100%; padding: 1em 0 .5em 0; margin-top: 0; }
+#EAD_wrapper .EAD_content { padding-left: 5px; }
+#EAD_wrapper .EAD_content { color: #555; }
+#EAD_wrapper .EAD_content td { padding-bottom: .25em; }
+
+#EAD_wrapper .EAD_section { padding-bottom: 1.5em; }
+
+/* EAD Table of Contents */
+#EAD_wrapper .EAD_toc { background-color: #8b8b8b; width: 225px; }
+#EAD_wrapper .EAD_toc h3, #EAD_wrapper .EAD_toc h4, 
+#EAD_wrapper .EAD_toc h5, #EAD_wrapper .EAD_toc h6  {  color: #575757; background: #DDDDDD url(/ead/images/nav_background.jpg) repeat-x; padding: 3px 3px 3px 8px; margin: 0 4px 2px 4px; }
+#EAD_wrapper .EAD_toc ul ul { font-size: .85em; }
+
+#EAD_wrapper .EAD_toc li { margin: .5em 3px .5em 15px; list-style-type: square; color: #575757;  }
+#EAD_wrapper .EAD_toc li a  { color: #666666; font-weight: bold; font-size: 12px;}
+#EAD_wrapper .EAD_toc h3 a { color: #575757; font-weight: bold;
+		
+		text-decoration: none;
+		 }
+#EAD_wrapper .EAD_toc h3 a:hover, #EAD_wrapper .EAD_toc li a:hover {color: #000; }
+	/* #EAD_wrapper .EAD_toc li a:visited, #EAD_wrapper .EAD_toc h3 a:visited { color: #A57D42; } - IE6 marks all toc links as visited, w/in ContentDM. */ 
+#EAD_wrapper .EAD_toc .toggle_btn { font-size: .8em; text-decoration: none; color: #000; margin-right: 4px; }
+#EAD_wrapper .EAD_toc a.toggle_btn:hover, #EAD_wrapper .EAD_toc a.toggle_btn:visited { color: #000; }
+#EAD_wrapper .EAD_toc h3 { position: relative; top: 0; left: 0; }
+#EAD_wrapper .EAD_toc h3 a.toggle_btn { position: absolute; width: 1.5em; top: 5px; right: 10px; margin-right: 0; }
+#EAD_wrapper #toc_containers { width: 215px; overflow: hidden; background: #dbdbdb; margin-left: 5px; margin-bottom: 2px; }
+#EAD_wrapper .EAD_toc h2 {  color: #fff;
+	text-align: center;
+	font-size: 16px; }
+
+
+/* Container styles */ 
+#EAD_wrapper div.dsc .label { margin-right: .5em; }
+#EAD_wrapper .container { margin: .3em 0; }
+#EAD_wrapper .c01 { padding-left: 1em; margin-top: 1em; }
+#EAD_wrapper .c02 { padding-left: 2em; }
+#EAD_wrapper .c03 { padding-left: 3em; }
+#EAD_wrapper .c04 { padding-left: 4em; }
+
+#EAD_wrapper .container p { margin-left: 1em; }
+
+/* Add right padding to #EAD_overview section, to ensure text won't be hidden 
+	under the search portlet if the window isn't wide enough. */ 
+#EAD_wrapper #EAD_overview { margin-right: 280px; }
+
+/* Render styles */
+#EAD_wrapper .smcaps { font-variant: small-caps; }
+#EAD_wrapper .underlined { text-decoration: underline; }

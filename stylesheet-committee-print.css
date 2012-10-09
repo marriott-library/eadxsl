@@ -1,0 +1,6 @@
+#MWDL_box { display: none; }
+#EAD_wrapper .EAD_section { margin-top: 0;  }
+#EAD_wrapper #EAD_header h1 { margin: auto; padding: 0; }
+.EAD_toc { display: none; }
+.EAD_content{ width: 100% !important; } 
+.toggle_btn { display: none; }

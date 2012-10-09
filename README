@@ -1,0 +1,85 @@
+Author:
+	Alan Witkowski (alan.witkowski@utah.edu)
+	
+Requirements:
+	ContentDM version 6.1.4 or newer
+	Access to ContentDM web files
+	
+Notes:
+	Follow the steps below to make the necessary adjustments to the ContentDM code.
+	
+	Be sure to change the variable $ead_collections in CdmController.php to
+	match the list of aliases for your EAD collections. See below.
+
+*** FILES **********************************************************************
+Note: path_to_contentdm_webroot is where the contentDM website files are installed. (e.g. /usr/local/Content6/Website)
+
+The following files will need to be modified:
+[path_to_contentdm_webroot]/cdm_common/cdm/controllers/CdmController.php
+[path_to_contentdm_webroot]/cdm_common/cdm/views/scripts/cdm/singleitem.phtml
+
+The following files will need to be added:
+[path_to_contentdm_webroot]/cdm_common/cdm/views/scripts/cdm/ead_view.phtml
+[path_to_contentdm_webroot]/public_html/ead/images/nav_background.jpg
+[path_to_contentdm_webroot]/public_html/ead/ss-committee-cdm.xsl
+[path_to_contentdm_webroot]/public_html/ead/ss-committee-container.xsl
+[path_to_contentdm_webroot]/public_html/ead/stylesheet-committee.css
+[path_to_contentdm_webroot]/public_html/ead/stylesheet-committee-IE.css
+[path_to_contentdm_webroot]/public_html/ead/stylesheet-committee-print.css
+
+
+*** MODIFICATIONS TO CONTENTDM *************************************************
+
+STEP 1: In cdm_common/cdm/controllers/CdmController.php, Line 1259, at the end of the function singleitemAction, add the code:
+
+// Check if the current collection is in the EAD list, then get the file path to the xml file and pass it to the view
+$ead_collections = array("UU_EAD", "ww-EAD", "ushs_ead", "westmin_ead");
+if(in_array($this->view->collection, $ead_collections)) {
+	$image_info = simplexml_load_string($this->cdmapi->api_get_data("dmGetImageInfo/".$this->view->collection."/".$this->view->id."/xml","xml"));
+	$this->view->upload_filepath = $image_info->filename;
+}
+
+--------------------------------------------------------------------------------
+
+STEP 2a: In cdm_common/cdm/views/scripts/cdm/singleitem.phtml, around line 224, after <!-- ITEM_VIEWER -->, add the code:
+
+if(isset($this->upload_filepath)) {
+	echo $this->partial("cdm/ead_view.phtml", array("xml_file"=>$this->upload_filepath));   
+}
+else {
+
+--------------------------------------------------------------------------------
+
+STEP 2b: Add the end brace before the comment <!-- META_DATA --> around line 437:
+
+<?
+} // End brace
+?>
+
+--------------------------------------------------------------------------------
+
+STEP 3: Add the file cdm_common/cdm/views/scripts/cdm/ead_view.phtml:
+
+<?php
+    // Author: Alan Witkowski
+    //   Info: Processes an EAD XML file with XSLT and outputs the result.
+    
+    // Create XML objects
+    $doc_xml = new DOMDocument(); 
+    $doc_xsl = new DOMDocument();
+    
+    // Load XML file
+    if($doc_xml->load($this->xml_file)) {
+    
+        // Load XSL transform file
+        if($doc_xsl->load($_SERVER['DOCUMENT_ROOT'] . "/ead/ss-committee-cdm.xsl")) {
+            $xslt_proc = new XSLTProcessor;
+            $xslt_proc->importStyleSheet($doc_xsl);
+    
+            // Output the transformed version
+            if($output = $xslt_proc->transformToXML($doc_xml)) {
+                echo "<div class=\"ead_container\">$output</div>";
+            }  
+        }  
+    }  
+?>

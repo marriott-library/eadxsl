@@ -1,0 +1,7 @@
+/* stylesheet-committee-IE.css: IE (6 or less) specific fixes for the stylesheet "stylesheet-committee.css" */
+/* MWDL "portlet": IE font size is larger than expected */ 
+.epi-chromeBG { font-size: 14px; }
+
+/* toggle_btn width is too skinny in IE.  It also needs to be positioned slightly lower. */
+#EAD_wrapper .EAD_toc h3 a.toggle_btn { width: 2em; top: 7px; }
+#EAD_wrapper .EAD_toc .toggle_btn { width: 2em; }
