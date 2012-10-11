@@ -4,6 +4,7 @@ Author:
 Requirements:
 	ContentDM version 6.1.4 or newer
 	Access to ContentDM web files
+	php5-xsl module for XSL processing (http://php.net/manual/en/book.xsl.php)
 	
 Notes:
 	Follow the steps below to make the necessary adjustments to the ContentDM code.
@@ -43,16 +44,18 @@ if(in_array($this->view->collection, $ead_collections)) {
 
 STEP 2a: In cdm_common/cdm/views/scripts/cdm/singleitem.phtml, around line 224, after <!-- ITEM_VIEWER -->, add the code:
 
+<?php
 if(isset($this->upload_filepath)) {
 	echo $this->partial("cdm/ead_view.phtml", array("xml_file"=>$this->upload_filepath));   
 }
 else {
+?>
 
 --------------------------------------------------------------------------------
 
 STEP 2b: Add the end brace before the comment <!-- META_DATA --> around line 437:
 
-<?
+<?php
 } // End brace
 ?>
 
