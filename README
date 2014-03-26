@@ -2,7 +2,7 @@ Author:
 	Alan Witkowski (alan.witkowski@utah.edu)
 	
 Requirements:
-	ContentDM version 6.1.4 or newer
+	ContentDM version 6.6 or newer
 	Access to ContentDM web files
 	php5-xsl module for XSL processing (http://php.net/manual/en/book.xsl.php)
 	
@@ -35,7 +35,7 @@ The following files will need to be added:
 
 *** MODIFICATIONS TO CONTENTDM *************************************************
 
-STEP 1: In cdm_common/cdm/controllers/CdmController.php, Line 1259, at the end of the function singleitemAction, add the code:
+STEP 1: In cdm_common/cdm/controllers/CdmController.php, around Line 730, at the end of the function itemviewerAction, add the code:
 
 // Check if the current collection is in the EAD list, then get the file path to the xml file and pass it to the view
 $ead_collections = array("UU_EAD", "ww-EAD", "ushs_ead", "westmin_ead");
@@ -46,7 +46,7 @@ if(in_array($this->view->collection, $ead_collections)) {
 
 --------------------------------------------------------------------------------
 
-STEP 2a: In cdm_common/cdm/views/scripts/cdm/singleitem.phtml, around line 224, after <!-- ITEM_VIEWER -->, add the code:
+STEP 2a: In cdm_common/cdm/views/scripts/cdm/singleitem.phtml, around line 233, after <!-- ITEM_VIEWER -->, add the code:
 
 <?php
 if(isset($this->upload_filepath)) {
@@ -57,7 +57,7 @@ else {
 
 --------------------------------------------------------------------------------
 
-STEP 2b: Add the end brace before the comment <!-- META_DATA --> around line 437:
+STEP 2b: Add the end brace before the comment <!-- META_DATA --> around line 457:
 
 <?php
 } // End brace
